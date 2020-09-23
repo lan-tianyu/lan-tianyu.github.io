@@ -55,18 +55,18 @@
   };
 </script>
 
-  <meta name="description" content="sqlalchemy不重复新增数据背景最近在做一个接口自动化的portal页，涉及到要把pytest测试脚本中的测试用例/测试类的名称和相关描述获取到存放在db，给前端使用。这里预设有一个case2db.py的脚本负责处理获取用例/更新db的操作，目标是每次全量跑文件后已新增的用例数据只会更新，新增的用例数据新增到db。 环境123456SQLAlchemy==1.3Python==3.7MySQ">
+  <meta name="description" content="sqlalchemy插入数据时重复数据做更新背景最近在做一个接口自动化的portal页，涉及到要把pytest测试脚本中的测试用例/测试类的名称和相关描述获取到存放在db，给前端使用。这里预设有一个case2db.py的脚本负责处理获取用例/更新db的操作，目标是每次全量跑文件后已新增的用例数据只会更新，新增的用例数据新增到db。 环境123456SQLAlchemy==1.3Python==3.">
 <meta name="keywords" content="sqlalchemy,python,mysql">
 <meta property="og:type" content="article">
-<meta property="og:title" content="sqlalchemy插入数据是重复数据做更新">
+<meta property="og:title" content="sqlalchemy插入数据时重复数据做更新">
 <meta property="og:url" content="https://lan-tianyu.github.io/2020/09/20/sqlalchemy-插入数据时重复数据做更新-/index.html">
 <meta property="og:site_name" content="小田田的业余空间">
-<meta property="og:description" content="sqlalchemy不重复新增数据背景最近在做一个接口自动化的portal页，涉及到要把pytest测试脚本中的测试用例/测试类的名称和相关描述获取到存放在db，给前端使用。这里预设有一个case2db.py的脚本负责处理获取用例/更新db的操作，目标是每次全量跑文件后已新增的用例数据只会更新，新增的用例数据新增到db。 环境123456SQLAlchemy==1.3Python==3.7MySQ">
+<meta property="og:description" content="sqlalchemy插入数据时重复数据做更新背景最近在做一个接口自动化的portal页，涉及到要把pytest测试脚本中的测试用例/测试类的名称和相关描述获取到存放在db，给前端使用。这里预设有一个case2db.py的脚本负责处理获取用例/更新db的操作，目标是每次全量跑文件后已新增的用例数据只会更新，新增的用例数据新增到db。 环境123456SQLAlchemy==1.3Python==3.">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-09-23T12:57:28.009Z">
+<meta property="og:updated_time" content="2020-09-23T13:12:51.962Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="sqlalchemy插入数据是重复数据做更新">
-<meta name="twitter:description" content="sqlalchemy不重复新增数据背景最近在做一个接口自动化的portal页，涉及到要把pytest测试脚本中的测试用例/测试类的名称和相关描述获取到存放在db，给前端使用。这里预设有一个case2db.py的脚本负责处理获取用例/更新db的操作，目标是每次全量跑文件后已新增的用例数据只会更新，新增的用例数据新增到db。 环境123456SQLAlchemy==1.3Python==3.7MySQ">
+<meta name="twitter:title" content="sqlalchemy插入数据时重复数据做更新">
+<meta name="twitter:description" content="sqlalchemy插入数据时重复数据做更新背景最近在做一个接口自动化的portal页，涉及到要把pytest测试脚本中的测试用例/测试类的名称和相关描述获取到存放在db，给前端使用。这里预设有一个case2db.py的脚本负责处理获取用例/更新db的操作，目标是每次全量跑文件后已新增的用例数据只会更新，新增的用例数据新增到db。 环境123456SQLAlchemy==1.3Python==3.">
   <link rel="canonical" href="https://lan-tianyu.github.io/2020/09/20/sqlalchemy-插入数据时重复数据做更新-/">
 
 
@@ -81,7 +81,7 @@
   };
 </script>
 
-  <title>sqlalchemy插入数据是重复数据做更新 | 小田田的业余空间</title>
+  <title>sqlalchemy插入数据时重复数据做更新 | 小田田的业余空间</title>
   
 
 
@@ -255,7 +255,7 @@
       <header class="post-header">
 
         
-          <h1 class="post-title" itemprop="name headline">sqlalchemy插入数据是重复数据做更新
+          <h1 class="post-title" itemprop="name headline">sqlalchemy插入数据时重复数据做更新
 
             
           </h1>
@@ -283,7 +283,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-23 12:57:28" itemprop="dateModified" datetime="2020-09-23T12:57:28Z">2020-09-23</time>
+                <time title="修改时间：2020-09-23 13:12:51" itemprop="dateModified" datetime="2020-09-23T13:12:51Z">2020-09-23</time>
               </span>
             
           
@@ -318,7 +318,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span>3.3k</span>
+              <span>4.9k</span>
             </span>
           
             <span class="post-meta-item" title="阅读时长">
@@ -328,7 +328,7 @@
               
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
               
-              <span>6 分钟</span>
+              <span>9 分钟</span>
             </span>
           
 
@@ -341,7 +341,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="sqlalchemy不重复新增数据"><a href="#sqlalchemy不重复新增数据" class="headerlink" title="sqlalchemy不重复新增数据"></a>sqlalchemy不重复新增数据</h1><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>最近在做一个接口自动化的portal页，涉及到要把pytest测试脚本中的测试用例/测试类的名称和相关描述获取到存放在db，给前端使用。这里预设有一个case2db.py的脚本负责处理获取用例/更新db的操作，目标是每次全量跑文件后已新增的用例数据只会更新，新增的用例数据新增到db。</p>
+        <h1 id="sqlalchemy插入数据时重复数据做更新"><a href="#sqlalchemy插入数据时重复数据做更新" class="headerlink" title="sqlalchemy插入数据时重复数据做更新"></a>sqlalchemy插入数据时重复数据做更新</h1><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>最近在做一个接口自动化的portal页，涉及到要把pytest测试脚本中的测试用例/测试类的名称和相关描述获取到存放在db，给前端使用。这里预设有一个case2db.py的脚本负责处理获取用例/更新db的操作，目标是每次全量跑文件后已新增的用例数据只会更新，新增的用例数据新增到db。</p>
 <h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">SQLAlchemy==1.3</span><br><span class="line">Python==3.7</span><br><span class="line">MySQL==8.0.21</span><br><span class="line">PyMySQL==0.10.1</span><br><span class="line"></span><br><span class="line">DBeaver--数据库管理工具</span><br></pre></td></tr></table></figure>
 
 <h2 id="最终代码示例"><a href="#最终代码示例" class="headerlink" title="最终代码示例"></a>最终代码示例</h2><h3 id="DBModel"><a href="#DBModel" class="headerlink" title="DBModel"></a>DBModel</h3><ol>
@@ -351,12 +351,23 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">from sqlalchemy import Column, Integer, String, Boolean, Enum, DateTime, ForeignKey, UniqueConstraint</span><br><span class="line"></span><br><span class="line">class CaseFuncName(Base):</span><br><span class="line">    __tablename__ = &apos;portal_case_name&apos;</span><br><span class="line"></span><br><span class="line">    id = Column(Integer, primary_key=True, autoincrement=True)</span><br><span class="line">    func_name = Column(String(100))</span><br><span class="line">    func_title = Column(String(200))</span><br><span class="line">    test_filename = Column(String(100))</span><br><span class="line">    valid = Column(Boolean, nullable=False, default=1)</span><br><span class="line"></span><br><span class="line">    UniqueConstraint(func_name, test_filename, name=&apos;idx_func&apos;)</span><br><span class="line"></span><br><span class="line">    def __init__(self, func_name, func_title, test_filename):</span><br><span class="line">        self.func_name = func_name</span><br><span class="line">        self.func_title = func_title</span><br><span class="line">        self.test_filename = test_filename</span><br></pre></td></tr></table></figure>
 
 <h3 id="on-duplicate-key-update-or-prefix-with-‘IGNORE’"><a href="#on-duplicate-key-update-or-prefix-with-‘IGNORE’" class="headerlink" title="on_duplicate_key_update or prefix_with(‘IGNORE’)"></a>on_duplicate_key_update or prefix_with(‘IGNORE’)</h3><ol>
-<li>on_duplicate_key_update()和 prefix_with(‘IGNORE’) 两者选一，都可以实现新增的数据存在就更新，不存在就是新增。</li>
-<li>上面两种方式可以直接在insert_stmt后添加，比如 insert_stmt = insert(..your code..).prefix_with(‘IGNORE’)</li>
+<li>on_duplicate_key_update()表示遇到重复数据时做更新，参数是需要更新的列和值；如果数据不存在就是新增。</li>
+<li>prefix_with(‘IGNORE’)表示遇到重复数据时做直接忽略；如果数据不存在就是新增。</li>
+<li>上面两种方式可以直接在insert_stmt后添加，比如 insert_stmt = insert(..your key &amp; value..).prefix_with(‘IGNORE’)</li>
 <li>代码中数据库连接为session，所以直接用session.execute()</li>
 <li>session.commit()不能少，要不然数据更新不成功哟~ 官方例子没有这一行</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">def add_onecase(func_name, func_title, test_filename):</span><br><span class="line">    insert_stmt = insert(CaseFuncName).values(</span><br><span class="line">        func_name=func_name,</span><br><span class="line">        func_title=func_title,</span><br><span class="line">        test_filename=test_filename</span><br><span class="line">    )</span><br><span class="line">    # do_update_stmt = insert_stmt.on_duplicate_key_update(</span><br><span class="line">    #     func_name=func_name,</span><br><span class="line">    #     test_filename=test_filename</span><br><span class="line">    # )</span><br><span class="line">    do_update_stmt = insert_stmt.prefix_with(&apos;IGNORE&apos;)</span><br><span class="line">    session.execute(do_update_stmt)</span><br><span class="line">    session.commit()</span><br></pre></td></tr></table></figure>
+<h4 id="on-duplicate-key-update-例子"><a href="#on-duplicate-key-update-例子" class="headerlink" title="on_duplicate_key_update 例子"></a>on_duplicate_key_update 例子</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">insert_stmt = insert(CaseFuncName).values(</span><br><span class="line">    func_name=func_name,</span><br><span class="line">    func_title=func_title,</span><br><span class="line">    test_filename=test_filename</span><br><span class="line">)</span><br><span class="line">do_update_stmt = insert_stmt.on_duplicate_key_update(</span><br><span class="line">    func_name=func_name,</span><br><span class="line">    func_title=func_title,</span><br><span class="line">    test_filename=test_filename</span><br><span class="line">)</span><br><span class="line">session.execute(do_update_stmt)</span><br><span class="line">session.commit()</span><br></pre></td></tr></table></figure>
+
+<p>sql执行日志如下，sql转化成 INSERT INTO (table) values() ON DUPLICATE KEY UPDATE ()。</p>
+<p>测试时可以修改on_duplicate_key_update的key/value，观察sql变化，相对能更好地理解on_duplicate_key_update中的参数使用。</p>
+<p>如下sql中DUPLICATE KEY 是表中唯一约束，不需要额外传参。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">2020-09-23 20:52:21,028 INFO sqlalchemy.engine.base.Engine INSERT INTO portal_case_name (func_name, func_title, test_filename, valid) VALUES (%(func_name)s, %(func_title)s, %(test_filename)s, %(valid)s) ON DUPLICATE KEY UPDATE func_name = %(param_1)s, func_title = %(param_2)s, test_filename = %(param_3)s</span><br><span class="line">2020-09-23 20:52:21,029 INFO sqlalchemy.engine.base.Engine &#123;&apos;func_name&apos;: &apos;xx&apos;, &apos;func_title&apos;: &apos;xx&apos;, &apos;test_filename&apos;: &apos;xx&apos;, &apos;valid&apos;: 1, &apos;param_1&apos;: &apos;xx&apos;, &apos;param_2&apos;: &apos;&apos;, &apos;param_3&apos;: &apos;xx&apos;&#125;</span><br><span class="line">2020-09-23 20:52:21,032 INFO sqlalchemy.engine.base.Engine COMMIT</span><br></pre></td></tr></table></figure>
+
+<h4 id="prefix-with-‘IGNORE’-例子"><a href="#prefix-with-‘IGNORE’-例子" class="headerlink" title="prefix_with(‘IGNORE’) 例子"></a>prefix_with(‘IGNORE’) 例子</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">insert_stmt = insert(CaseFuncName).values(</span><br><span class="line">    func_name=func_name,</span><br><span class="line">    func_title=func_title,</span><br><span class="line">    test_filename=test_filename</span><br><span class="line">).prefix_with(&apos;IGNORE&apos;)</span><br><span class="line">session.execute(do_update_stmt)</span><br><span class="line">session.commit()</span><br></pre></td></tr></table></figure>
+
+<p>sql执行日志如下，sql转化成 INSERT IGNORE INTO (table) values()</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">2020-09-23 21:06:28,166 INFO sqlalchemy.engine.base.Engine INSERT IGNORE INTO portal_case_name (func_name, func_title, test_filename, valid) VALUES (%(func_name)s, %(func_title)s, %(test_filename)s, %(valid)s)</span><br><span class="line">2020-09-23 21:06:28,167 INFO sqlalchemy.engine.base.Engine &#123;&apos;func_name&apos;: &apos;xx&apos;, &apos;func_title&apos;: &apos;xx&apos;, &apos;test_filename&apos;: &apos;xx&apos;, &apos;valid&apos;: 1&#125;</span><br><span class="line">2020-09-23 21:06:28,169 INFO sqlalchemy.engine.base.Engine COMMIT</span><br></pre></td></tr></table></figure>
 
 <h2 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h2><h3 id="UniqueConstraint设置不生效"><a href="#UniqueConstraint设置不生效" class="headerlink" title="UniqueConstraint设置不生效"></a>UniqueConstraint设置不生效</h3><p>一开始看网上很多例子，写成了如下方式：<code>UniqueConstraint(&#39;func_name&#39;, &#39;test_filename&#39;, name=&#39;idx_func&#39;)</code>，可以成功创建表，但是唯一性约束设置不生效，查看表属性中的约束，没有idx_func，查看建表语句没有<code>CONSTRAINT idx_func UNIQUE (func_name, test_filename)</code>。最终的结果是后面重复数据可以新增到表中。</p>
 <h3 id="UniqueConstraint设置后session-commit-报错"><a href="#UniqueConstraint设置后session-commit-报错" class="headerlink" title="UniqueConstraint设置后session.commit()报错"></a>UniqueConstraint设置后session.commit()报错</h3><p>新增单条用例如下：</p>
@@ -394,7 +405,7 @@
     <strong>本文作者： </strong>小田田</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://lan-tianyu.github.io/2020/09/20/sqlalchemy-插入数据时重复数据做更新-/" title="sqlalchemy插入数据是重复数据做更新">https://lan-tianyu.github.io/2020/09/20/sqlalchemy-插入数据时重复数据做更新-/</a>
+    <a href="https://lan-tianyu.github.io/2020/09/20/sqlalchemy-插入数据时重复数据做更新-/" title="sqlalchemy插入数据时重复数据做更新">https://lan-tianyu.github.io/2020/09/20/sqlalchemy-插入数据时重复数据做更新-/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
@@ -585,7 +596,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#sqlalchemy不重复新增数据"><span class="nav-number">1.</span> <span class="nav-text">sqlalchemy不重复新增数据</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#背景"><span class="nav-number">1.1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#环境"><span class="nav-number">1.2.</span> <span class="nav-text">环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最终代码示例"><span class="nav-number">1.3.</span> <span class="nav-text">最终代码示例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#DBModel"><span class="nav-number">1.3.1.</span> <span class="nav-text">DBModel</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#on-duplicate-key-update-or-prefix-with-‘IGNORE’"><span class="nav-number">1.3.2.</span> <span class="nav-text">on_duplicate_key_update or prefix_with(‘IGNORE’)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#遇到的问题"><span class="nav-number">1.4.</span> <span class="nav-text">遇到的问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#UniqueConstraint设置不生效"><span class="nav-number">1.4.1.</span> <span class="nav-text">UniqueConstraint设置不生效</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UniqueConstraint设置后session-commit-报错"><span class="nav-number">1.4.2.</span> <span class="nav-text">UniqueConstraint设置后session.commit()报错</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#INSERT…ON-DUPLICATE-KEY-UPDATE-Upsert-数据库文档不匹配"><span class="nav-number">1.4.3.</span> <span class="nav-text">INSERT…ON DUPLICATE KEY UPDATE (Upsert) 数据库文档不匹配</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据库参考文档例子误解"><span class="nav-number">1.4.4.</span> <span class="nav-text">数据库参考文档例子误解</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">1.5.</span> <span class="nav-text">参考</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#sqlalchemy插入数据时重复数据做更新"><span class="nav-number">1.</span> <span class="nav-text">sqlalchemy插入数据时重复数据做更新</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#背景"><span class="nav-number">1.1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#环境"><span class="nav-number">1.2.</span> <span class="nav-text">环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最终代码示例"><span class="nav-number">1.3.</span> <span class="nav-text">最终代码示例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#DBModel"><span class="nav-number">1.3.1.</span> <span class="nav-text">DBModel</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#on-duplicate-key-update-or-prefix-with-‘IGNORE’"><span class="nav-number">1.3.2.</span> <span class="nav-text">on_duplicate_key_update or prefix_with(‘IGNORE’)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#on-duplicate-key-update-例子"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">on_duplicate_key_update 例子</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#prefix-with-‘IGNORE’-例子"><span class="nav-number">1.3.2.2.</span> <span class="nav-text">prefix_with(‘IGNORE’) 例子</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#遇到的问题"><span class="nav-number">1.4.</span> <span class="nav-text">遇到的问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#UniqueConstraint设置不生效"><span class="nav-number">1.4.1.</span> <span class="nav-text">UniqueConstraint设置不生效</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UniqueConstraint设置后session-commit-报错"><span class="nav-number">1.4.2.</span> <span class="nav-text">UniqueConstraint设置后session.commit()报错</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#INSERT…ON-DUPLICATE-KEY-UPDATE-Upsert-数据库文档不匹配"><span class="nav-number">1.4.3.</span> <span class="nav-text">INSERT…ON DUPLICATE KEY UPDATE (Upsert) 数据库文档不匹配</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据库参考文档例子误解"><span class="nav-number">1.4.4.</span> <span class="nav-text">数据库参考文档例子误解</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">1.5.</span> <span class="nav-text">参考</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -614,14 +625,14 @@
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">23k</span>
+    <span title="站点总字数">24k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">41 分钟</span>
+    <span title="站点阅读时长">44 分钟</span>
 </div>
 
 <!--
