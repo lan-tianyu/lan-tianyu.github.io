@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="generator" content="Hexo 3.9.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.3.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.3.0" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.3.0">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.3.0',
+    sidebar: {"position":"right","display":"post","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    save_scroll: false,
+    copycode: {"enable":false,"show_result":false,"style":null},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    }
+  };
+</script>
+
+  <meta name="description" content="Linux安装Python3.7 环境: CentOS 6.6  在Linux CentOS 6.6测试环境上安装Python3.9环境，折腾了一天，各种找文档，还是各种报错，奔溃但最终还是搞定了~ 本文档将记录我的环境可以快速成功安装相关步骤，如果您遇到其他问题，也可以参考最后几个文档，顺藤摸瓜。 问题背景 Python官网 下载Python3.7.9源码包，’./configure; make">
+<meta name="keywords" content="Python3.7">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux安装Python3.7">
+<meta property="og:url" content="https://lan-tianyu.github.io/2020/09/29/Linux安装Python3.7/index.html">
+<meta property="og:site_name" content="Tian&#39;s Blog">
+<meta property="og:description" content="Linux安装Python3.7 环境: CentOS 6.6  在Linux CentOS 6.6测试环境上安装Python3.9环境，折腾了一天，各种找文档，还是各种报错，奔溃但最终还是搞定了~ 本文档将记录我的环境可以快速成功安装相关步骤，如果您遇到其他问题，也可以参考最后几个文档，顺藤摸瓜。 问题背景 Python官网 下载Python3.7.9源码包，’./configure; make">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-09-28T11:17:37.516Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Linux安装Python3.7">
+<meta name="twitter:description" content="Linux安装Python3.7 环境: CentOS 6.6  在Linux CentOS 6.6测试环境上安装Python3.9环境，折腾了一天，各种找文档，还是各种报错，奔溃但最终还是搞定了~ 本文档将记录我的环境可以快速成功安装相关步骤，如果您遇到其他问题，也可以参考最后几个文档，顺藤摸瓜。 问题背景 Python官网 下载Python3.7.9源码包，’./configure; make">
+  <link rel="canonical" href="https://lan-tianyu.github.io/2020/09/29/Linux安装Python3.7/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>Linux安装Python3.7 | Tian's Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  <div class="container sidebar-position-right">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Tian's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+      
+        
+        <li class="menu-item menu-item-home">
+      
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-tags">
+      
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">11</span></a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-categories">
+      
+    
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">5</span></a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">9</span></a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-sitemap">
+      
+    
+      
+    
+
+    <a href="/sitemap.xml" rel="section"><i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>站点地图</a>
+
+  </li>
+  </ul>
+
+    
+
+</nav>
+</div>
+    </header>
+
+    
+
+  <a href="https://github.com/lan-tianyu" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content page-post-detail">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://lan-tianyu.github.io/2020/09/29/Linux安装Python3.7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="小田田">
+      <meta itemprop="description" content="日常宅 | 一起看书呀 | 会炒菜 | 爱打扫 | 喜欢霉霉 | 喜欢金秀贤">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tian's Blog">
+    </span>
+      <header class="post-header">
+
+        
+          <h1 class="post-title" itemprop="name headline">Linux安装Python3.7
+
+            
+          </h1>
+        
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2020-09-28 19:00:22 / 修改时间：11:17:37" itemprop="dateCreated datePublished" datetime="2020-09-28T19:00:22Z">2020-09-28</time>
+            </span>
+          
+            
+
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            <span class="post-meta-item" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">本文字数：</span>
+              
+              <span>3.6k</span>
+            </span>
+          
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              
+              <span>7 分钟</span>
+            </span>
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="Linux安装Python3-7"><a href="#Linux安装Python3-7" class="headerlink" title="Linux安装Python3.7"></a>Linux安装Python3.7</h1><blockquote>
+<p>环境: CentOS 6.6</p>
+</blockquote>
+<p>在Linux CentOS 6.6测试环境上安装Python3.9环境，折腾了一天，各种找文档，还是各种报错，奔溃但最终还是搞定了~</p>
+<p>本文档将记录我的环境可以快速成功安装相关步骤，如果您遇到其他问题，也可以参考最后几个文档，顺藤摸瓜。</p>
+<h2 id="问题背景"><a href="#问题背景" class="headerlink" title="问题背景"></a>问题背景</h2><ol>
+<li><p><a href="https://www.python.org/downloads/" target="_blank" rel="noopener">Python官网</a> 下载Python3.7.9源码包，’./configure; make; make install’之后，使用pip安装包全部报错 <code>Can”t connect to HTTPS URL because the SSL module is not available</code>；</p>
+</li>
+<li><p>安装openssl1.1之后，参考<a href="https://stackoverflow.com/questions/53543477/building-python-3-7-1-ssl-module-failed" target="_blank" rel="noopener">Building Python 3.7.1 - SSL module failed</a>重新make&amp;make install 还是报错：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Failed to build these modules:</span><br><span class="line">_hashlib              _ssl                                     </span><br><span class="line"></span><br><span class="line">Could not build the ssl module!</span><br><span class="line">Python requires an OpenSSL 1.0.2 or 1.1 compatible libssl with X509_VERIFY_PARAM_set1_host().</span><br><span class="line">LibreSSL 2.6.4 and earlier do not provide the necessary APIs, https://github.com/libressl-portable/portable/issues/381</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="安装ssl"><a href="#安装ssl" class="headerlink" title="安装ssl"></a>安装ssl</h2><h3 id="安装openssl"><a href="#安装openssl" class="headerlink" title="安装openssl"></a>安装openssl</h3><ol>
+<li><p>下载最新版本openssl：<a href="https://www.openssl.org/source/openssl-1.1.1-pre8.tar.gz" target="_blank" rel="noopener">https://www.openssl.org/source/openssl-1.1.1-pre8.tar.gz</a></p>
+</li>
+<li><p>编译安装</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd openssl-1.1.1-pre8</span><br><span class="line">./config --prefix=/usr/local/openssl no-zlib</span><br><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>备份openssl旧版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 检查文件是否存在且可以看下之前的软链</span><br><span class="line">ls -ahl /usr/bin/openssl</span><br><span class="line">ls -ahl /usr/include/openssl</span><br><span class="line"></span><br><span class="line">mv /usr/bin/openssl /usr/bin/openssl.bak</span><br><span class="line">mv /usr/include/openssl /usr/include/openssl.bak</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>openssl新版本建立软链</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"># 检查文件是否存在且是当前编译安装后的结果</span><br><span class="line">ls -ahl /usr/local/openssl/lib/libssl.so.1.1</span><br><span class="line">ls -ahl /usr/local/openssl/include/openssl</span><br><span class="line">ls -ahl /usr/local/openssl/bin/openssl</span><br><span class="line"></span><br><span class="line">ln -s /usr/local/openssl/lib/libssl.so.1.1 /usr/local/lib64/libssl.so</span><br><span class="line">ln -s /usr/local/openssl/include/openssl /usr/include/openssl</span><br><span class="line">ln -s /usr/local/openssl/bin/openssl /usr/bin/openssl</span><br><span class="line"></span><br><span class="line"># 检查文件是否存在且是当前编译安装后的结果</span><br><span class="line">ls -ahl /usr/lib64/libssl.so</span><br><span class="line">ls -ahl /usr/local/ssl/lib/libssl.so</span><br><span class="line"></span><br><span class="line">mv /usr/lib64/libssl.so /usr/lib64/libssl.so.bak</span><br><span class="line">ln -s /usr/local/ssl/lib/libssl.so /usr/lib64/libssl.so</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改系统配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 写入openssl库文件的搜索路径</span><br><span class="line">echo &quot;/usr/local/openssl/lib&quot; &gt;&gt; /etc/ld.so.conf</span><br><span class="line"># 使修改后的/etc/ld.so.conf生效 </span><br><span class="line">ldconfig -v</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看openssl版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">openssl version</span><br><span class="line">OpenSSL 1.1.1-pre8 (beta) 20 Jun 2018</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h3 id="安装-libressl-2-9"><a href="#安装-libressl-2-9" class="headerlink" title="安装 libressl-2.9"></a>安装 libressl-2.9</h3><ol>
+<li><p>下载最新版本libressl：<a href="https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-2.9.1.tar.gz" target="_blank" rel="noopener">https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-2.9.1.tar.gz</a></p>
+</li>
+<li><p>编译安装</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd libressl-2.9.1</span><br><span class="line">./config --prefix=/usr/local/ssl</span><br><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看libressl版本，libressl安装之后，我没有处理软链到/usr/bin</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 全路径</span><br><span class="line">/usr/local/ssl/bin/openssl version</span><br><span class="line">LibreSSL 2.9.1</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="安装Python3-7-9"><a href="#安装Python3-7-9" class="headerlink" title="安装Python3.7.9"></a>安装Python3.7.9</h2><h3 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h3><ol>
+<li><p>下载Python3.7.9：<a href="https://www.python.org/ftp/python/3.7.9/Python-3.7.9.tgz" target="_blank" rel="noopener">https://www.python.org/ftp/python/3.7.9/Python-3.7.9.tgz</a></p>
+</li>
+<li><p>./configure –with-openssl</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd Python-3.7.9</span><br><span class="line">./configure --prefix=/usr/local/python37 --with-openssl=/usr/local/openssl</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改 Modules/Setup<br> a. 解除注释 _socket socketmodule.c<br> b. 解除注释SSL相关配置，SSL=/usr/local/ssl，路径是上面libressl的安装路径</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># Socket module helper for socket(2)</span><br><span class="line">_socket socketmodule.c</span><br><span class="line"></span><br><span class="line"># Socket module helper for SSL support; you must comment out the other</span><br><span class="line"># socket line above, and possibly edit the SSL variable:</span><br><span class="line">SSL=/usr/local/ssl</span><br><span class="line">_ssl _ssl.c \</span><br><span class="line">    -DUSE_SSL -I$(SSL)/include -I$(SSL)/include/openssl \</span><br><span class="line">    -L$(SSL)/lib -lssl -lcrypto</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>make &amp; make install，如果需要查看详细输出/错误信息，可以将错误输出、标准输出重定向到文件。</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">make 1&gt;../output.log 2&gt;../error.log</span><br><span class="line">或者</span><br><span class="line">make</span><br></pre></td></tr></table></figure>
+
+<p> make步骤的标准输出中，如果看到ssl模块已经build成功，说明make成功了。</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Python build finished successfully!</span><br><span class="line">The necessary bits to build these optional modules were not found:</span><br><span class="line">_lzma                 _tkinter              _uuid</span><br><span class="line">To find the necessary bits, look in setup.py in detect_modules() for the module&apos;s name.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">The following modules found by detect_modules() in setup.py, have been</span><br><span class="line">built by the Makefile instead, as configured by the Setup files:</span><br><span class="line">_abc                  _socket               _ssl</span><br><span class="line">atexit                pwd                   time</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>最后是 <code>make install</code></p>
+</li>
+</ol>
+<h3 id="修改Python版本"><a href="#修改Python版本" class="headerlink" title="修改Python版本"></a>修改Python版本</h3><ol>
+<li><p>查看老版本/新版本</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ls -ahl /usr/bin/*python*</span><br><span class="line">ls -ahl /usr/local/python37/bin</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>检查最新版本是否安装成功</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># 当前版本是3.7.9且import ssl不报错</span><br><span class="line">/usr/local/python37/bin/python3</span><br><span class="line">Python 3.7.9 (default, Sep 28 2020, 15:38:31) </span><br><span class="line">[GCC 4.4.7 20120313 (Red Hat 4.4.7-11)] on linux</span><br><span class="line">Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.</span><br><span class="line">&gt;&gt;&gt; import ssl</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>备份及设置新版本</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mv /usr/bin/python /usr/bin/python.bak</span><br><span class="line">ln -s /usr/local/python37/bin/python3.7 /usr/bin/python</span><br><span class="line">ln -s /usr/local/python37/bin/python3.7 /usr/bin/python3</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://stackoverflow.com/questions/53543477/building-python-3-7-1-ssl-module-failed" target="_blank" rel="noopener">Building Python 3.7.1 - SSL module failed</a></p>
+<p><a href="https://qingshan.tk/2019/04/25/how-to-install-python3-on-old-os/" target="_blank" rel="noopener">Building Python 3.7.1 - SSL module failed</a></p>
+<p><a href="http://www.xiaohuait.com/2019/11/22/%E8%A7%A3%E5%86%B3%E5%AE%89%E8%A3%85python3-7-4%E6%8A%A5%E9%94%99cant-connect-to-https-url-because-the-ssl-module-is-not-available/" target="_blank" rel="noopener">解决安装python3-7-4报错</a></p>
+<p><a href="https://www.thetopsites.net/article/53543477.shtml" target="_blank" rel="noopener">安装Python3.7过程中报错的解决方法</a></p>
+<p><a href="https://www.dazhuanlan.com/2019/10/13/5da209b4efe66/?__cf_chl_jschl_tk__=44963380753ef111b9115ee672be1f3dcbfc1932-1601262831-0-AUnr9z-nlHGyqzNriKBlQtCiaFoJ7Wa-Fo9Vfn_htHjjZYPwgCzluOJ3yS2C50i5e-TCvFPoMP9P6V4ivXhNKdrshWG0tWsDvqRdYHpKQfnzPHU34GDujuCw69I-HsGG2LuFMlI4jTWXq9QJbOUKvXfDTOLg1AHeR-m3uW9eHCSr2AOO75UeQVmEghAq5eEyluN37esSSE5goy6qtoYwFyea_X0P0K3rNGZvxpBFsKPgyMA26C-BaSBRx8JA5_tfpej-7hmkHazKtlcm8bVWvBpKnPnx7NvOULBE7eeQsd7G8Sgb5JSV1ocr_txX8TGNzQ" target="_blank" rel="noopener">python3.7安装后ssl问题</a></p>
+
+    </div>
+
+    
+    
+    
+      <div>
+        
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>小田田</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://lan-tianyu.github.io/2020/09/29/Linux安装Python3.7/" title="Linux安装Python3.7">https://lan-tianyu.github.io/2020/09/29/Linux安装Python3.7/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+
+    <footer class="post-footer">
+          
+        
+        <div class="post-tags">
+            <a href="/tags/Python3-7/" rel="tag"># Python3.7</a>
+          
+        </div>
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+              <a href="/2020/09/28/MySQL安装后启动及密码配置问题/" rel="next" title="MySQL安装后启动及密码配置问题">
+                <i class="fa fa-chevron-left"></i> MySQL安装后启动及密码配置问题
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+          </div>
+        </div>
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+    
+    <div class="comments" id="gitalk-container"></div>
+  
+
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+      src="/images/avatar.gif"
+      alt="小田田">
+  <p class="site-author-name" itemprop="name">小田田</p>
+  <div class="site-description motion-element" itemprop="description">日常宅 | 一起看书呀 | 会炒菜 | 爱打扫 | 喜欢霉霉 | 喜欢金秀贤</div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">9</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://github.com/lan-tianyu" title="GitHub &rarr; https://github.com/lan-tianyu" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="mailto:yourname@gmail.com" title="E-Mail &rarr; mailto:yourname@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+    
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    
+  
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+        </div>
+      </div>
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux安装Python3-7"><span class="nav-number">1.</span> <span class="nav-text">Linux安装Python3.7</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#问题背景"><span class="nav-number">1.1.</span> <span class="nav-text">问题背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装ssl"><span class="nav-number">1.2.</span> <span class="nav-text">安装ssl</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装openssl"><span class="nav-number">1.2.1.</span> <span class="nav-text">安装openssl</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装-libressl-2-9"><span class="nav-number">1.2.2.</span> <span class="nav-text">安装 libressl-2.9</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装Python3-7-9"><span class="nav-number">1.3.</span> <span class="nav-text">安装Python3.7.9</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装步骤"><span class="nav-number">1.3.1.</span> <span class="nav-text">安装步骤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改Python版本"><span class="nav-number">1.3.2.</span> <span class="nav-text">修改Python版本</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">1.4.</span> <span class="nav-text">参考</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">小田田</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    
+    <span title="站点总字数">32k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    
+    <span title="站点阅读时长">58 分钟</span>
+</div>
+
+<!--
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.3.0</div>-->
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+    <span class="post-meta-divider">|</span>
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+      </div>
+
+    
+
+  </div>
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+<script src="/js/utils.js?v=7.3.0"></script>
+  <script src="/js/motion.js?v=7.3.0"></script>
+
+
+  <script src="/js/schemes/muse.js?v=7.3.0"></script>
+
+
+
+<script src="/js/next-boot.js?v=7.3.0"></script>
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+
+  
+  <script src="/js/scrollspy.js?v=7.3.0"></script>
+<script src="/js/post-details.js?v=7.3.0"></script>
+
+
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+  function initGitalk() {
+    var gitalk = new Gitalk({
+      clientID: '94c65e2882b3080b93bc',
+      clientSecret: 'afa349eee676e71c4e1682e72cd18a8abe18e907',
+      repo: 'lan-tianyu.github.io',
+      owner: 'lan-tianyu',
+      admin: ['lan-tianyu'],
+      id: '583a35fbb42ef875b0b0b262b402a560',
+        language: window.navigator.language || window.navigator.userLanguage,
+      
+      distractionFreeMode: 'true'
+    });
+    gitalk.render('gitalk-container');
+  }
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', initGitalk, window.Gitalk);
+</script>
+
+</body>
+</html>
